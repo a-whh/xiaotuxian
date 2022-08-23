@@ -4,7 +4,7 @@
     <div class="home-entry">
       <!-- 左侧分类 -->
       <home-category />
-      <!-- banner -->
+      <!-- banner 轮播图 -->
       <home-banner />
     </div>
   </div>
@@ -239,9 +239,17 @@
 </template>
 
 <script setup>
-import {} from 'vue'
+import { getbannerData } from '../../api/Home'
+import { ref } from 'vue'
 import HomeCategory from './components/homeCategory.vue'
 import HomeBanner from './components/homeBanner.vue'
+const bannerList = ref([])
+const getbannerList = async() => {
+  const res = await getbannerData()
+  bannerList.value = res
+  console.log(bannerList.value)
+}
+getbannerList()
 </script>
 
 <style lang="scss" scoped>

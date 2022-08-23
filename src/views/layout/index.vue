@@ -23,6 +23,7 @@ import appFooterVue from './components/appFooterVue.vue'
 import { useStore } from 'vuex'
 const store = useStore()
 store.dispatch('home/getCategoryList')
+store.dispatch('home/getBrandList')
 
 </script>
 

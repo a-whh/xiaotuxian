@@ -6,7 +6,7 @@
           <!-- 图片容器 -->
           <ul class="carousel-body">
             <!-- fade 显示的图片加上 -->
-            <li class="carousel-item fade">
+            <li class="carousel-item ">
               <router-link to="/">
                 <!-- 指定了  prop 对象之后，需要修改此处的数据使用 -->
                 <img

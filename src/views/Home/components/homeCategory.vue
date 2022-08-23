@@ -4,7 +4,7 @@
         <ul class="menu">
           <li class="menu-item" v-for="item in $store.getters.categoryList" :key="item.id">
             <!-- 一级跳转 -->
-            <router-link to="/category/id">{{item.name}} </router-link>
+            <router-link to="`/category/${id}`">{{item.name}} </router-link>
             <!-- 二级跳转 -->
             <router-link to="/">{{getTwo(item.children)}}</router-link>
             <!-- 骨架 -->
@@ -13,6 +13,32 @@
               <h4>分类推荐 <small>根据您的购买或浏览记录推荐</small></h4>
               <ul>
                 <li v-for="good in item.goods" :key="good.id">
+                  <router-link to="/">
+                    <img
+                      :src="good.picture"
+                      alt=""
+                    />
+                    <div class="info">
+                      <p class="name ellipsis-2">{{good.name}}</p>
+                      <p class="desc ellipsis">{{good.desc}}</p>
+                      <p class="price"><i>¥</i>{{good.price}}</p>
+                    </div>
+                  </router-link>
+                </li>
+              </ul>
+            </div>
+          </li>
+           <li class="menu-item">
+            <!-- 一级跳转 -->
+            <router-link to="/">品牌</router-link>
+            <!-- 二级跳转 -->
+            <router-link to="/">品牌推荐</router-link>
+            <!-- 骨架 -->
+            <!-- 左侧分类弹层 -->
+            <div class="home-layer layer">
+              <h4>品牌推荐 <small>根据您的购买或浏览记录推荐</small></h4>
+              <ul>
+                <li v-for="good in  $store.getters.brandList" :key="good.id">
                   <router-link to="/">
                     <img
                       :src="good.picture"
@@ -53,7 +79,7 @@ function getTwo(arr) {
   .menu {
     .menu-item {
       padding-left: 40px;
-      height: 50px;
+      height: 45px;
       line-height: 50px;
       &:hover {
         background: $xtxColor;
@@ -82,7 +108,7 @@ function getTwo(arr) {
 // 左侧分类弹出层样式
 .layer {
   width: 990px;
-  height: 500px;
+  height: 450px;
   background: rgba(255, 255, 255, 0.8);
   position: absolute;
   left: 250px;
