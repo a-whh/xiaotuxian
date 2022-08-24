@@ -4,7 +4,7 @@
         <ul class="menu">
           <li class="menu-item" v-for="item in $store.getters.categoryList" :key="item.id">
             <!-- 一级跳转 -->
-            <router-link to="`/category/${id}`">{{item.name}} </router-link>
+            <router-link :to="`/category/${item.id}`">{{item.name}} </router-link>
             <!-- 二级跳转 -->
             <router-link to="/">{{getTwo(item.children)}}</router-link>
             <!-- 骨架 -->

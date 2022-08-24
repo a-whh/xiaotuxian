@@ -10,7 +10,7 @@
           <div class="layer">
             <ul>
               <li v-for="child in item.children" :key="child.id">
-                <router-link to='`/category/sub/${child.id}`'>
+                <router-link :to='`/category/sub/${child.id}`'>
                   <img
                     :src="child.picture"
                     alt=""

@@ -2,40 +2,91 @@
 <template>
   <div class="home-banner">
         <!-- 轮播图 -->
-        <div class="carousel">
+        <div class="carousel" @mouseover="mouseoverFn" @mouseout="mouseoutFn" >
           <!-- 图片容器 -->
           <ul class="carousel-body">
             <!-- fade 显示的图片加上 -->
-            <li class="carousel-item ">
+            <li  class="carousel-item " :class="{fade: index === num }" v-for="(item, index) in data" :key="item[imgUrl]">
               <router-link to="/">
                 <!-- 指定了  prop 对象之后，需要修改此处的数据使用 -->
                 <img
-                  src="http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-15/1ba86bcc-ae71-42a3-bc3e-37b662f7f07e.jpg"
+                  :src="item[imgUrl]"
                 />
               </router-link>
             </li>
           </ul>
           <!-- 上一张 -->
-          <a href="javascript:;" class="carousel-btn prev"
+          <a href="javascript:;" @click="prev" class="carousel-btn prev"
             ><i class="iconfont icon-angle-left"></i
           ></a>
           <!-- 下一张 -->
-          <a href="javascript:;" class="carousel-btn next"
+          <a href="javascript:;"  @click="next" class="carousel-btn next"
             ><i class="iconfont icon-angle-right"></i
           ></a>
           <!-- 指示器 -->
           <div class="carousel-indicator">
             <!-- active 激活点 -->
-            <span></span>
-            <span class="active"></span>
-            <span></span>
+            <span v-for="(item, index) in data" :key="item[imgUrl]" :class="{active : index === num}"></span>
+            <!-- <span class="active"></span> -->
           </div>
         </div>
       </div>
 </template>
 
 <script setup>
-import {} from 'vue'
+import { defineProps, ref } from 'vue'
+
+const props = defineProps({
+  data: {
+    type: Array,
+    required: true
+  },
+  hrefText: {
+    type: String,
+    required: true
+  },
+  imgUrl: {
+    type: String,
+    required: true
+  }
+})
+const num = ref(0)
+const next = function() {
+  if (num.value === props.data.length - 1) {
+    num.value = 0
+    return
+  }
+  num.value++
+}
+const prev = function() {
+  if (num.value === 0) {
+    num.value = props.data.length - 1
+    return
+  }
+  num.value--
+}
+
+let timer = setInterval(() => {
+  num.value++
+  if (num.value === props.data.length - 1) {
+    num.value = 0
+  }
+}, 1400)
+
+// 鼠标划入
+const mouseoverFn = function() {
+  clearInterval(timer)
+  timer = null
+}
+// // 鼠标划出
+const mouseoutFn = function() {
+  timer = setInterval(() => {
+    num.value++
+    if (num.value === props.data.length - 1) {
+      num.value = 0
+    }
+  }, 1400)
+}
 
 </script>
 

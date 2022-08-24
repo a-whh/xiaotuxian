@@ -5,7 +5,7 @@
       <!-- 左侧分类 -->
       <home-category />
       <!-- banner 轮播图 -->
-      <home-banner />
+      <home-banner :data="bannerList" hrefText="hrefUrl" imgUrl="imgUrl" />
     </div>
   </div>
 
