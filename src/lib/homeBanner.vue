@@ -26,7 +26,7 @@
           <!-- 指示器 -->
           <div class="carousel-indicator">
             <!-- active 激活点 -->
-            <span v-for="(item, index) in data" :key="item[imgUrl]" :class="{active : index === num}"></span>
+            <span v-for="(item, index) in data" @click="num = index" :key="item[imgUrl]" :class="{active : index === num}"></span>
             <!-- <span class="active"></span> -->
           </div>
         </div>
@@ -50,7 +50,9 @@ const props = defineProps({
     required: true
   }
 })
+// 当前的index
 const num = ref(0)
+// 下一页
 const next = function() {
   if (num.value === props.data.length - 1) {
     num.value = 0
@@ -58,6 +60,7 @@ const next = function() {
   }
   num.value++
 }
+// 上一页
 const prev = function() {
   if (num.value === 0) {
     num.value = props.data.length - 1
@@ -65,10 +68,10 @@ const prev = function() {
   }
   num.value--
 }
-
+// 自动轮播
 let timer = setInterval(() => {
   num.value++
-  if (num.value === props.data.length - 1) {
+  if (num.value === props.data.length) {
     num.value = 0
   }
 }, 1400)
@@ -82,7 +85,7 @@ const mouseoverFn = function() {
 const mouseoutFn = function() {
   timer = setInterval(() => {
     num.value++
-    if (num.value === props.data.length - 1) {
+    if (num.value === props.data.length) {
       num.value = 0
     }
   }, 1400)

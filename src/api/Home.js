@@ -26,3 +26,20 @@ export function getbannerData(distributionSite) {
     }
   })
 }
+
+// 获取-新鲜好物
+export function getFlashList(limit) {
+  return request({
+    url: '/home/new',
+    params: {
+      limit
+    }
+  })
+}
+
+// 获取-人气推荐
+export function getHotList() {
+  return request({
+    url: '/home/hot'
+  })
+}

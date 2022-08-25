@@ -63,7 +63,6 @@ const actions = {
   async getBrandList({ commit }) {
     const res = await getbrand()
     commit('SET_brandList', res)
-    console.log(res)
   }
 
 }

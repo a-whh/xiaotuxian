@@ -5,136 +5,14 @@
       <!-- 左侧分类 -->
       <home-category />
       <!-- banner 轮播图 -->
-      <home-banner :data="bannerList" hrefText="hrefUrl" imgUrl="imgUrl" />
+      <m-banner :data="bannerList" hrefText="hrefUrl" imgUrl="imgUrl" />
     </div>
   </div>
 
   <!-- 新鲜好物 -->
-  <div class="home-new" ref="lazyTarget">
-    <!-- panel 面板 -->
-    <div class="home-panel">
-      <div class="container">
-        <div class="head">
-          <h3>
-            新鲜好物
-            <span>新鲜出炉 品质靠谱</span>
-          </h3>
-          <router-link to="/path" class="more">
-            <span>查看全部</span>
-            <i class="iconfont icon-angle-right"></i>
-          </router-link>
-        </div>
-        <!-- 面板内容 -->
-        <transition name="fade">
-          <!-- 面板内容 -->
-          <ul class="goods-list">
-            <li class="hover-shadow">
-              <router-link to="/product/id">
-                <img
-                  src="https://yanxuan-item.nosdn.127.net/6e289ea8795025fddf3cff60d3f400a1.jpg"
-                  alt=""
-                />
-                <p class="name ellipsis">冬季男鞋</p>
-                <p class="price">&yen;213</p>
-              </router-link>
-            </li>
-            <li class="hover-shadow">
-              <router-link to="/product/id">
-                <img
-                  src="https://yanxuan-item.nosdn.127.net/6e289ea8795025fddf3cff60d3f400a1.jpg"
-                  alt=""
-                />
-                <p class="name ellipsis">冬季男鞋</p>
-                <p class="price">&yen;213</p>
-              </router-link>
-            </li>
-            <li class="hover-shadow">
-              <router-link to="/product/id">
-                <img
-                  src="https://yanxuan-item.nosdn.127.net/6e289ea8795025fddf3cff60d3f400a1.jpg"
-                  alt=""
-                />
-                <p class="name ellipsis">冬季男鞋</p>
-                <p class="price">&yen;213</p>
-              </router-link>
-            </li>
-            <li class="hover-shadow">
-              <router-link to="/product/id">
-                <img
-                  src="https://yanxuan-item.nosdn.127.net/6e289ea8795025fddf3cff60d3f400a1.jpg"
-                  alt=""
-                />
-                <p class="name ellipsis">冬季男鞋</p>
-                <p class="price">&yen;213</p>
-              </router-link>
-            </li>
-          </ul>
-        </transition>
-      </div>
-    </div>
-  </div>
+  <flash-goods></flash-goods>
   <!-- 人气爆款 -->
-  <div class="home-hot">
-    <div class="home-panel">
-      <div class="container">
-        <div class="head">
-          <h3>
-            人气推荐
-            <span>人气爆款 不容错过</span>
-          </h3>
-          <router-link to="/path" class="more">
-            <span>查看全部</span>
-            <i class="iconfont icon-angle-right"></i>
-          </router-link>
-        </div>
-        <!-- 面板内容 -->
-        <transition name="fade">
-          <ul class="goods-list">
-            <li class="hover-shadow">
-              <router-link to="/">
-                <img
-                  src="https://yjy-oss-files.oss-cn-zhangjiakou.aliyuncs.com/tuxian/popular_1.jpg"
-                  alt=""
-                />
-                <p class="name">特惠推荐</p>
-                <p class="desc">他们最实惠</p>
-              </router-link>
-            </li>
-            <li class="hover-shadow">
-              <router-link to="/">
-                <img
-                  src="https://yjy-oss-files.oss-cn-zhangjiakou.aliyuncs.com/tuxian/popular_1.jpg"
-                  alt=""
-                />
-                <p class="name">特惠推荐</p>
-                <p class="desc">他们最实惠</p>
-              </router-link>
-            </li>
-            <li class="hover-shadow">
-              <router-link to="/">
-                <img
-                  src="https://yjy-oss-files.oss-cn-zhangjiakou.aliyuncs.com/tuxian/popular_1.jpg"
-                  alt=""
-                />
-                <p class="name">特惠推荐</p>
-                <p class="desc">他们最实惠</p>
-              </router-link>
-            </li>
-            <li class="hover-shadow">
-              <router-link to="/">
-                <img
-                  src="https://yjy-oss-files.oss-cn-zhangjiakou.aliyuncs.com/tuxian/popular_1.jpg"
-                  alt=""
-                />
-                <p class="name">特惠推荐</p>
-                <p class="desc">他们最实惠</p>
-              </router-link>
-            </li>
-          </ul>
-        </transition>
-      </div>
-    </div>
-  </div>
+  <hot-goods />
   <!-- 热门品牌 -->
   <div class="home-panel">
     <div class="container">
@@ -239,116 +117,23 @@
 </template>
 
 <script setup>
+// API
 import { getbannerData } from '../../api/Home'
 import { ref } from 'vue'
+// 组件
 import HomeCategory from './components/homeCategory.vue'
-import HomeBanner from './components/homeBanner.vue'
+import FlashGoods from './components/flashGoods.vue'
+import HotGoods from './components/hotGoods.vue'
 const bannerList = ref([])
 const getbannerList = async() => {
   const res = await getbannerData()
   bannerList.value = res
-  console.log(bannerList.value)
 }
 getbannerList()
+
 </script>
 
 <style lang="scss" scoped>
-// 新鲜好物
-.goods-list {
-  display: flex;
-  justify-content: space-between;
-  height: 406px;
-  li {
-    width: 306px;
-    height: 406px;
-    background: #f0f9f4;
-    img {
-      width: 306px;
-      height: 306px;
-    }
-    p {
-      font-size: 22px;
-      padding: 12px 30px 0 30px;
-      text-align: center;
-    }
-    .price {
-      color: $priceColor;
-    }
-  }
-}
-
-// 查看更多样式
-.more {
-  margin-bottom: 2px;
-  span {
-    font-size: 16px;
-    vertical-align: middle;
-    margin-right: 4px;
-    color: #999;
-  }
-  i {
-    font-size: 14px;
-    vertical-align: middle;
-    position: relative;
-    top: 2px;
-    color: #ccc;
-  }
-  &:hover {
-    span,
-    i {
-      color: $xtxColor;
-    }
-  }
-}
-
-// panel 面板样式
-.home-panel {
-  background-color: #fff;
-  .head {
-    padding: 40px 0;
-    display: flex;
-    align-items: flex-end;
-    h3 {
-      flex: 1;
-      font-size: 32px;
-      font-weight: normal;
-      margin-left: 6px;
-      height: 35px;
-      line-height: 35px;
-      span {
-        font-size: 16px;
-        color: #999;
-        margin-left: 20px;
-      }
-    }
-  }
-}
-
-// 新鲜好物样式结束
-
-// 人气爆款
-.goods-list {
-  display: flex;
-  justify-content: space-between;
-  height: 426px;
-  li {
-    width: 306px;
-    height: 406px;
-    img {
-      width: 306px;
-      height: 306px;
-    }
-    p {
-      font-size: 22px;
-      padding-top: 12px;
-      text-align: center;
-    }
-    .desc {
-      color: #999;
-      font-size: 18px;
-    }
-  }
-}
 
 // 查看更多样式
 .more {

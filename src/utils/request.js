@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const request = axios.create({
-  baseURL: 'https://pcapi-xiaotuxian-front-devtest.itheima.net'
+  baseURL: 'https://apipc-xiaotuxian-front.itheima.net'
 })
 
 // // request interceptor 请求拦截器
