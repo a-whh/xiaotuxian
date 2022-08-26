@@ -1,6 +1,6 @@
 <!-- 查看更多 -->
 <template>
-  <router-link to="/path" class="more">
+  <router-link :to="to" class="more">
     <span>{{ text }}</span>
     <i class="iconfont icon-angle-right"></i>
   </router-link>
@@ -12,6 +12,9 @@ defineProps({
   text: {
     type: String,
     default: '查看全部'
+  },
+  to: {
+    type: String
   }
 })
 </script>

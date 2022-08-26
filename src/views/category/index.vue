@@ -11,420 +11,62 @@
           <router-link to="/"> 居家 </router-link>
         </div>
       </div>
-
       <!-- 二级分类 -->
       <div class="sub-list">
         <h3>全部分类</h3>
         <ul>
-          <li>
+          <li v-for="item in allsort.children" :key="item.id">
             <a href="javascript:;">
               <img v-lazy
-                src="https://yanxuan.nosdn.127.net/3102b963e7a3c74b9d2ae90e4380da65.png?quality=95&imageView"
+                :src="item.picture"
               />
-              <p>茶壶酒具</p>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:;">
-              <img v-lazy
-                src="https://yanxuan.nosdn.127.net/3102b963e7a3c74b9d2ae90e4380da65.png?quality=95&imageView"
-              />
-              <p>茶壶酒具</p>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:;">
-              <img v-lazy
-                src="https://yanxuan.nosdn.127.net/3102b963e7a3c74b9d2ae90e4380da65.png?quality=95&imageView"
-              />
-              <p>茶壶酒具</p>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:;">
-              <img v-lazy
-                src="https://yanxuan.nosdn.127.net/3102b963e7a3c74b9d2ae90e4380da65.png?quality=95&imageView"
-              />
-              <p>茶壶酒具</p>
+              <p>{{item.name}}</p>
             </a>
           </li>
         </ul>
       </div>
       <!-- 各个分类推荐商品 -->
-      <div class="ref-goods">
+      <div class="ref-goods" v-for="item in allsort.children" :key="item.id">
         <div class="head">
-          <h3>- 茶咖酒具 -</h3>
+          <h3>- {{item.name}} -</h3>
           <p class="tag">温暖柔软，品质之选</p>
           <!-- 查看更多 -->
-          <router-link to="/category/sub/id" class="more">
-            <span>查看全部</span>
-            <i class="iconfont icon-angle-right"></i>
-          </router-link>
+          <more text="查看全部" :to="`/category/sub/${item.id}`" ></more>
         </div>
         <div class="body">
-          <router-link to="/product/id" class="goods-item hover-shadow">
+          <router-link v-for="child in item.goods" :key="child.id" :to="`/product/${child.id}`" class="goods-item hover-shadow">
             <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
+              :src="child.picture"
             />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
+            <p class="name ellipsis">{{child.name}}</p>
             <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
+             {{child.desc}}
             </p>
             <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
+            <p class="price">&yen;{{child.price}}</p>
           </router-link>
         </div>
       </div>
-      <!-- 各个分类推荐商品 -->
-      <div class="ref-goods">
-        <div class="head">
-          <h3>- 茶咖酒具 -</h3>
-          <p class="tag">温暖柔软，品质之选</p>
-          <!-- 查看更多 -->
-          <router-link to="/category/sub/id" class="more">
-            <span>查看全部</span>
-            <i class="iconfont icon-angle-right"></i>
-          </router-link>
-        </div>
-        <div class="body">
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-        </div>
-      </div>
-      <!-- 各个分类推荐商品 -->
-      <div class="ref-goods">
-        <div class="head">
-          <h3>- 茶咖酒具 -</h3>
-          <p class="tag">温暖柔软，品质之选</p>
-          <!-- 查看更多 -->
-          <router-link to="/category/sub/id" class="more">
-            <span>查看全部</span>
-            <i class="iconfont icon-angle-right"></i>
-          </router-link>
-        </div>
-        <div class="body">
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-        </div>
-      </div>
-      <!-- 各个分类推荐商品 -->
-      <div class="ref-goods">
-        <div class="head">
-          <h3>- 茶咖酒具 -</h3>
-          <p class="tag">温暖柔软，品质之选</p>
-          <!-- 查看更多 -->
-          <router-link to="/category/sub/id" class="more">
-            <span>查看全部</span>
-            <i class="iconfont icon-angle-right"></i>
-          </router-link>
-        </div>
-        <div class="body">
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-        </div>
-      </div>
-      <!-- 各个分类推荐商品 -->
-      <div class="ref-goods">
-        <div class="head">
-          <h3>- 茶咖酒具 -</h3>
-          <p class="tag">温暖柔软，品质之选</p>
-          <!-- 查看更多 -->
-          <router-link to="/category/sub/id" class="more">
-            <span>查看全部</span>
-            <i class="iconfont icon-angle-right"></i>
-          </router-link>
-        </div>
-        <div class="body">
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-          <router-link to="/product/id" class="goods-item hover-shadow">
-            <img v-lazy
-              src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-              alt=""
-            />
-            <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-            <p class="desc ellipsis">
-              百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-            </p>
-            <!-- &yen; 人民币标记 -->
-            <p class="price">&yen;12</p>
-          </router-link>
-        </div>
-      </div>
+
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+// api
+import { getAllCategory } from '@/api/category.js'
+import { useRoute } from 'vue-router'
+import { ref } from 'vue'
+import More from '../../lib/more.vue'
+const route = useRoute()
+// 全部分类
+const allsort = ref([])
+const getAll = async() => {
+  allsort.value = await getAllCategory(route.params.id)
+  console.log(allsort.value)
+}
+getAll()
+</script>
 
 <style lang="scss" scoped>
 .top-category {
