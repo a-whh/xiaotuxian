@@ -5,7 +5,7 @@
       <!-- 右侧插槽 -->
       <template #right>
         <!-- 更多组件 -->
-        <m-more></m-more>
+        <m-more to="/"></m-more>
       </template>
       <!-- 内容插槽 -->
       <template #default>

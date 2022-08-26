@@ -11,7 +11,7 @@ const routes = [
         component: () => import('@/views/Home')
       },
       {
-        path: '/category/:id',
+        path: '/category/:pid',
         component: () => import('@/views/category')
       },
       {

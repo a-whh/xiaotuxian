@@ -56,16 +56,27 @@
 // api
 import { getAllCategory } from '@/api/category.js'
 import { useRoute } from 'vue-router'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import More from '../../lib/more.vue'
 const route = useRoute()
 // 全部分类
 const allsort = ref([])
 const getAll = async() => {
-  allsort.value = await getAllCategory(route.params.id)
-  console.log(allsort.value)
+  allsort.value = await getAllCategory(route.params.pid)
 }
 getAll()
+watch(
+  () => route.params.pid,
+  (curVal, preVal) => {
+    if (!curVal) return
+    getAll(curVal)
+  },
+  {
+    immediate: true
+  }
+)
+console.log(route)
+
 </script>
 
 <style lang="scss" scoped>
