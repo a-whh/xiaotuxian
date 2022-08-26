@@ -18,6 +18,7 @@ import {} from 'vue'
 .box1 {
   width: 100%;
   .one {
+    overflow: hidden;
     width: 100%;
     height: 306px;
     background-color: #e4e4e4;
@@ -26,14 +27,14 @@ import {} from 'vue'
   .one::after {
         content: "";
     position: absolute;
-    // animation: shan-86b02dda 1.5s ease 0s infinite;
-    animation-duration: 1.5s;
-    animation-timing-function: ease;
-    animation-delay: 0s;
-    animation-iteration-count: infinite;
-    animation-direction: normal;
-    animation-fill-mode: none;
-    animation-play-state: running;
+    animation: shan 1.5s ease 0s infinite;
+    // animation-duration: 1.5s;
+    // animation-timing-function: ease;
+    // animation-delay: 0s;
+    // animation-iteration-count: infinite;
+    // animation-direction: normal;
+    // animation-fill-mode: none;
+    // animation-play-state: running;
     // animation-name: shan-86b02dda;
     top: 0;
     width: 50%;
@@ -48,6 +49,15 @@ import {} from 'vue'
     background-clip: initial;
     background-color: initial;
     transform: skewX(-45deg);
+    @keyframes shan{
+     from {
+        left: -120%;
+      }
+
+  to {
+    left: 120%;
+  }
+}
   }
   .two{
     width: 100%;

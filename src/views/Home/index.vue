@@ -8,7 +8,6 @@
       <m-banner :data="bannerList" hrefText="hrefUrl" imgUrl="imgUrl" />
     </div>
   </div>
-
   <!-- 新鲜好物 -->
   <flash-goods></flash-goods>
   <!-- 人气爆款 -->
