@@ -40,11 +40,12 @@
               </td>
               <td>
                 <div class="goods">
-                  <router-link to="/"
-                    ><img
+                  <router-link to="/">
+                    <img
+                    v-lazy
                       src="https://yanxuan-item.nosdn.127.net/13ab302f8f2c954d873f03be36f8fb03.png"
-                      alt=""
-                  /></router-link>
+                      alt=""/>
+                  </router-link>
                   <div>
                     <p class="name ellipsis">
                       和手足干裂说拜拜 ingrams手足皲裂修复霜
@@ -90,7 +91,7 @@
               <td>
                 <div class="goods">
                   <router-link to="/"
-                    ><img
+                    ><img v-lazy
                       src="https://yanxuan-item.nosdn.127.net/13ab302f8f2c954d873f03be36f8fb03.png"
                       alt=""
                   /></router-link>

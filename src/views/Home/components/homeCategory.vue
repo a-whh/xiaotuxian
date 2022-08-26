@@ -14,7 +14,7 @@
               <ul>
                 <li v-for="good in item.goods" :key="good.id">
                   <router-link to="/">
-                    <img
+                    <img v-lazy
                       :src="good.picture"
                       alt=""
                     />
@@ -40,7 +40,7 @@
               <ul>
                 <li v-for="good in  $store.getters.brandList" :key="good.id">
                   <router-link to="/">
-                    <img
+                    <img v-lazy
                       :src="good.picture"
                       alt=""
                     />

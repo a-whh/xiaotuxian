@@ -54,7 +54,7 @@
         <ul>
           <li>
             <router-link to="/product/id" class="goods-item hover-shadow">
-              <img
+              <img v-lazy
                 src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
                 alt=""
               />
@@ -68,7 +68,7 @@
           </li>
           <li>
             <router-link to="/product/id" class="goods-item hover-shadow">
-              <img
+              <img v-lazy
                 src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
                 alt=""
               />
@@ -82,7 +82,7 @@
           </li>
           <li>
             <router-link to="/product/id" class="goods-item hover-shadow">
-              <img
+              <img v-lazy
                 src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
                 alt=""
               />
@@ -96,7 +96,7 @@
           </li>
           <li>
             <router-link to="/product/id" class="goods-item hover-shadow">
-              <img
+              <img v-lazy
                 src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
                 alt=""
               />
@@ -110,7 +110,7 @@
           </li>
           <li>
             <router-link to="/product/id" class="goods-item hover-shadow">
-              <img
+              <img v-lazy
                 src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
                 alt=""
               />
@@ -124,7 +124,7 @@
           </li>
           <li>
             <router-link to="/product/id" class="goods-item hover-shadow">
-              <img
+              <img v-lazy
                 src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
                 alt=""
               />
@@ -138,7 +138,7 @@
           </li>
           <li>
             <router-link to="/product/id" class="goods-item hover-shadow">
-              <img
+              <img v-lazy
                 src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
                 alt=""
               />
@@ -152,7 +152,7 @@
           </li>
           <li>
             <router-link to="/product/id" class="goods-item hover-shadow">
-              <img
+              <img v-lazy
                 src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
                 alt=""
               />

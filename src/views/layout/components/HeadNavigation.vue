@@ -11,7 +11,7 @@
             <ul>
               <li v-for="child in item.children" :key="child.id">
                 <router-link :to='`/category/sub/${child.id}`'>
-                  <img
+                  <img v-lazy
                     :src="child.picture"
                     alt=""
                   />

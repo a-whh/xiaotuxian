@@ -40,7 +40,7 @@
             ></div>
             <!-- 大图 -->
             <div class="middle">
-              <img
+              <img v-lazy
                 src="https://yanxuan-item.nosdn.127.net/7ef0f743fe590efc6c5eda075c632aa0.jpg"
                 alt=""
               />
@@ -50,19 +50,19 @@
             <!-- 小图 -->
             <ul class="small">
               <li class="active">
-                <img
+                <img v-lazy
                   src="https://yanxuan-item.nosdn.127.net/7ef0f743fe590efc6c5eda075c632aa0.jpg"
                   alt=""
                 />
               </li>
               <li>
-                <img
+                <img v-lazy
                   src="https://yanxuan-item.nosdn.127.net/7ef0f743fe590efc6c5eda075c632aa0.jpg"
                   alt=""
                 />
               </li>
               <li>
-                <img
+                <img v-lazy
                   src="https://yanxuan-item.nosdn.127.net/7ef0f743fe590efc6c5eda075c632aa0.jpg"
                   alt=""
                 />
@@ -136,12 +136,12 @@
             <dl>
               <dt>颜色</dt>
               <dd>
-                <img
+                <img v-lazy
                   class="sku-state-mixin selectd"
                   src="https://yanxuan-item.nosdn.127.net/f8464775ab1524d5bcb6ede767c347a9.jpg"
                   title="颜色"
                 />
-                <img
+                <img v-lazy
                   class="sku-state-mixin disabled"
                   src="https://yanxuan-item.nosdn.127.net/f8464775ab1524d5bcb6ede767c347a9.jpg"
                   title="颜色"
@@ -186,7 +186,7 @@
             <li class="carousel-item fade">
               <div class="slider">
                 <router-link to="/">
-                  <img
+                  <img v-lazy
                     src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
                     alt="alt"
                   />
@@ -196,7 +196,7 @@
                   <p class="price">&yen;89</p>
                 </router-link>
                 <router-link to="/">
-                  <img
+                  <img v-lazy
                     src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
                     alt="alt"
                   />
@@ -206,7 +206,7 @@
                   <p class="price">&yen;89</p>
                 </router-link>
                 <router-link to="/">
-                  <img
+                  <img v-lazy
                     src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
                     alt="alt"
                   />
@@ -216,7 +216,7 @@
                   <p class="price">&yen;89</p>
                 </router-link>
                 <router-link to="/">
-                  <img
+                  <img v-lazy
                     src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
                     alt="alt"
                   />
@@ -230,7 +230,7 @@
             <li class="carousel-item fade">
               <div class="slider">
                 <router-link to="/">
-                  <img
+                  <img v-lazy
                     src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
                     alt="alt"
                   />
@@ -240,7 +240,7 @@
                   <p class="price">&yen;89</p>
                 </router-link>
                 <router-link to="/">
-                  <img
+                  <img v-lazy
                     src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
                     alt="alt"
                   />
@@ -250,7 +250,7 @@
                   <p class="price">&yen;89</p>
                 </router-link>
                 <router-link to="/">
-                  <img
+                  <img v-lazy
                     src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
                     alt="alt"
                   />
@@ -260,7 +260,7 @@
                   <p class="price">&yen;89</p>
                 </router-link>
                 <router-link to="/">
-                  <img
+                  <img v-lazy
                     src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
                     alt="alt"
                   />
@@ -305,25 +305,25 @@
             </li>
           </ul>
           <!-- 图片 -->
-          <img
+          <img v-lazy
             src="https://yanxuan-item.nosdn.127.net/f72298bac718b8250fc61d5818a65ec7.jpg"
           />
-          <img
+          <img v-lazy
             src="https://yanxuan-item.nosdn.127.net/f72298bac718b8250fc61d5818a65ec7.jpg"
           />
-          <img
+          <img v-lazy
             src="https://yanxuan-item.nosdn.127.net/f72298bac718b8250fc61d5818a65ec7.jpg"
           />
-          <img
+          <img v-lazy
             src="https://yanxuan-item.nosdn.127.net/f72298bac718b8250fc61d5818a65ec7.jpg"
           />
-          <img
+          <img v-lazy
             src="https://yanxuan-item.nosdn.127.net/f72298bac718b8250fc61d5818a65ec7.jpg"
           />
-          <img
+          <img v-lazy
             src="https://yanxuan-item.nosdn.127.net/f72298bac718b8250fc61d5818a65ec7.jpg"
           />
-          <img
+          <img v-lazy
             src="https://yanxuan-item.nosdn.127.net/f72298bac718b8250fc61d5818a65ec7.jpg"
           />
         </div>
@@ -357,7 +357,7 @@
             <!-- 评论项 -->
             <div class="item">
               <div class="user">
-                <img
+                <img v-lazy
                   src="http://zhoushugang.gitee.io/erabbit-client-pc-static/uploads/avatar_1.png"
                   alt=""
                 />
@@ -384,25 +384,25 @@
                 <div class="goods-comment-image">
                   <div class="list">
                     <a href="javascript:;">
-                      <img
+                      <img v-lazy
                         src="https://yanxuan.nosdn.127.net/6cb114f4b71ce2ca51eeea4cbf761a2a.jpg?type=webp&imageView&quality=95&thumbnail=603x438"
                         alt=""
                       />
                     </a>
                     <a href="javascript:;">
-                      <img
+                      <img v-lazy
                         src="https://yanxuan.nosdn.127.net/6cb114f4b71ce2ca51eeea4cbf761a2a.jpg?type=webp&imageView&quality=95&thumbnail=603x438"
                         alt=""
                       />
                     </a>
                     <a href="javascript:;">
-                      <img
+                      <img v-lazy
                         src="https://yanxuan.nosdn.127.net/6cb114f4b71ce2ca51eeea4cbf761a2a.jpg?type=webp&imageView&quality=95&thumbnail=603x438"
                         alt=""
                       />
                     </a>
                     <a href="javascript:;">
-                      <img
+                      <img v-lazy
                         src="https://yanxuan.nosdn.127.net/6cb114f4b71ce2ca51eeea4cbf761a2a.jpg?type=webp&imageView&quality=95&thumbnail=603x438"
                         alt=""
                       />
@@ -420,7 +420,7 @@
             <!-- 评论项 -->
             <div class="item">
               <div class="user">
-                <img
+                <img v-lazy
                   src="http://zhoushugang.gitee.io/erabbit-client-pc-static/uploads/avatar_1.png"
                   alt=""
                 />
@@ -447,25 +447,25 @@
                 <div class="goods-comment-image">
                   <div class="list">
                     <a href="javascript:;">
-                      <img
+                      <img v-lazy
                         src="https://yanxuan.nosdn.127.net/6cb114f4b71ce2ca51eeea4cbf761a2a.jpg?type=webp&imageView&quality=95&thumbnail=603x438"
                         alt=""
                       />
                     </a>
                     <a href="javascript:;">
-                      <img
+                      <img v-lazy
                         src="https://yanxuan.nosdn.127.net/6cb114f4b71ce2ca51eeea4cbf761a2a.jpg?type=webp&imageView&quality=95&thumbnail=603x438"
                         alt=""
                       />
                     </a>
                     <a href="javascript:;">
-                      <img
+                      <img v-lazy
                         src="https://yanxuan.nosdn.127.net/6cb114f4b71ce2ca51eeea4cbf761a2a.jpg?type=webp&imageView&quality=95&thumbnail=603x438"
                         alt=""
                       />
                     </a>
                     <a href="javascript:;">
-                      <img
+                      <img v-lazy
                         src="https://yanxuan.nosdn.127.net/6cb114f4b71ce2ca51eeea4cbf761a2a.jpg?type=webp&imageView&quality=95&thumbnail=603x438"
                         alt=""
                       />
@@ -483,7 +483,7 @@
             <!-- 评论项 -->
             <div class="item">
               <div class="user">
-                <img
+                <img v-lazy
                   src="http://zhoushugang.gitee.io/erabbit-client-pc-static/uploads/avatar_1.png"
                   alt=""
                 />
@@ -510,25 +510,25 @@
                 <div class="goods-comment-image">
                   <div class="list">
                     <a href="javascript:;">
-                      <img
+                      <img v-lazy
                         src="https://yanxuan.nosdn.127.net/6cb114f4b71ce2ca51eeea4cbf761a2a.jpg?type=webp&imageView&quality=95&thumbnail=603x438"
                         alt=""
                       />
                     </a>
                     <a href="javascript:;">
-                      <img
+                      <img v-lazy
                         src="https://yanxuan.nosdn.127.net/6cb114f4b71ce2ca51eeea4cbf761a2a.jpg?type=webp&imageView&quality=95&thumbnail=603x438"
                         alt=""
                       />
                     </a>
                     <a href="javascript:;">
-                      <img
+                      <img v-lazy
                         src="https://yanxuan.nosdn.127.net/6cb114f4b71ce2ca51eeea4cbf761a2a.jpg?type=webp&imageView&quality=95&thumbnail=603x438"
                         alt=""
                       />
                     </a>
                     <a href="javascript:;">
-                      <img
+                      <img v-lazy
                         src="https://yanxuan.nosdn.127.net/6cb114f4b71ce2ca51eeea4cbf761a2a.jpg?type=webp&imageView&quality=95&thumbnail=603x438"
                         alt=""
                       />

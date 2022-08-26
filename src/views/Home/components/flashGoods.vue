@@ -21,7 +21,7 @@
           <ul class="goods-list" v-else>
             <li class="hover-shadow"  v-for="item in flashGoods" :key="item.id">
               <router-link :to="`/product/${item.id}`">
-                <img
+                <img v-lazy
                   :src="item.picture"
                 />
                 <p class="name ellipsis">{{item.name}}</p>

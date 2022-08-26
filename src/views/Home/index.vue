@@ -31,7 +31,7 @@
         <ul class="list" :style="{ transform: `translateX(${0 * 1240}px)` }">
           <li>
             <router-link to="/">
-              <img
+              <img v-lazy
                 src="http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-22/b0941d16-a466-4f23-bbf4-90f818298abb.jpg"
                 alt=""
               />
@@ -39,7 +39,7 @@
           </li>
           <li>
             <router-link to="/">
-              <img
+              <img v-lazy
                 src="http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-22/b0941d16-a466-4f23-bbf4-90f818298abb.jpg"
                 alt=""
               />
@@ -47,7 +47,7 @@
           </li>
           <li>
             <router-link to="/">
-              <img
+              <img v-lazy
                 src="http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-22/b0941d16-a466-4f23-bbf4-90f818298abb.jpg"
                 alt=""
               />
@@ -55,7 +55,7 @@
           </li>
           <li>
             <router-link to="/">
-              <img
+              <img v-lazy
                 src="http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-22/b0941d16-a466-4f23-bbf4-90f818298abb.jpg"
                 alt=""
               />
@@ -63,7 +63,7 @@
           </li>
           <li>
             <router-link to="/">
-              <img
+              <img v-lazy
                 src="http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-22/b0941d16-a466-4f23-bbf4-90f818298abb.jpg"
                 alt=""
               />
@@ -71,7 +71,7 @@
           </li>
           <li>
             <router-link to="/">
-              <img
+              <img v-lazy
                 src="http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-22/b0941d16-a466-4f23-bbf4-90f818298abb.jpg"
                 alt=""
               />
@@ -79,7 +79,7 @@
           </li>
           <li>
             <router-link to="/">
-              <img
+              <img v-lazy
                 src="http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-22/b0941d16-a466-4f23-bbf4-90f818298abb.jpg"
                 alt=""
               />
@@ -87,7 +87,7 @@
           </li>
           <li>
             <router-link to="/">
-              <img
+              <img v-lazy
                 src="http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-22/b0941d16-a466-4f23-bbf4-90f818298abb.jpg"
                 alt=""
               />
@@ -95,7 +95,7 @@
           </li>
           <li>
             <router-link to="/">
-              <img
+              <img v-lazy
                 src="http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-22/b0941d16-a466-4f23-bbf4-90f818298abb.jpg"
                 alt=""
               />
@@ -103,7 +103,7 @@
           </li>
           <li>
             <router-link to="/">
-              <img
+              <img v-lazy
                 src="http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-22/b0941d16-a466-4f23-bbf4-90f818298abb.jpg"
                 alt=""
               />

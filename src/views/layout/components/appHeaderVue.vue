@@ -24,7 +24,7 @@
           <div class="list">
             <div class="item">
               <router-link to="">
-                <img
+                <img v-lazy
                   src="https://yanxuan.nosdn.127.net/3102b963e7a3c74b9d2ae90e4380da65.png?quality=95&imageView"
                   alt=""
                 />
