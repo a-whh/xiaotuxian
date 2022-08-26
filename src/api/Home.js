@@ -8,11 +8,11 @@ export function getAllCategory() {
 }
 
 // 获取-热门品牌
-export function getbrand() {
+export function getbrand(num) {
   return request({
     url: '/home/brand',
     params: {
-      limit: 6
+      limit: num
     }
   })
 }
