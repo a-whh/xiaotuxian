@@ -2,15 +2,10 @@
   <div class="top-category">
     <div class="container">
       <!-- 面包屑 -->
-      <div class="bread">
-        <div class="bread-item">
-          <router-link to="/"> 首页 </router-link>
-        </div>
-        <i class="iconfont icon-angle-right"></i>
-        <div class="bread-item">
-          <router-link to="/"> 居家 </router-link>
-        </div>
-      </div>
+      <m-bread>
+        <m-bread-item to="/">首页</m-bread-item>
+        <m-bread-item>居家</m-bread-item>
+      </m-bread>
       <!-- 二级分类 -->
       <div class="sub-list">
         <h3>全部分类</h3>
@@ -47,7 +42,6 @@
           </router-link>
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -75,7 +69,6 @@ watch(
     immediate: true
   }
 )
-console.log(route)
 
 </script>
 
