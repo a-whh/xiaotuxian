@@ -2,32 +2,33 @@
   <div class="sub-categroy">
     <div class="container">
       <!-- 面包屑 -->
-      <div class="bread">
-        <div class="bread-item">
-          <router-link to="/"> 首页 </router-link>
-        </div>
-        <i class="iconfont icon-angle-right"></i>
-        <div class="bread-item">
-          <router-link to="/"> 居家 </router-link>
-        </div>
-        <div class="bread-item">
-          <router-link to="/"> 酒具 </router-link>
-        </div>
-      </div>
+    <m-bread>
+      <m-bread-item to="/">首页</m-bread-item>
+      <m-bread-item to="/">{{store.state.category.parentName}}</m-bread-item>
+      <m-bread-item >{{store.state.category.name}}</m-bread-item>
+    </m-bread>
       <!-- 筛选区域 -->
       <div class="sub-filter">
         <div class="item">
           <div class="head">品牌：</div>
           <div class="body">
-            <a class="active" href="javascript:;">全部</a>
-            <a class="active" href="javascript:;">釉色美颜</a>
+            <a
+            :class="{active : item.id === currentbrands}"
+            v-for="item in store.state.category.brands"
+            :key="item.id"
+            @click="choseBrand(item.id)"
+            href="javascript:;">{{item.name}}</a>
           </div>
         </div>
-        <div class="item">
-          <div class="head">颜色：</div>
+        <div class="item" v-for="item in store.state.category.saleProperties" :key="item.id">
+          <div class="head" >{{item.name}}：</div>
           <div class="body">
-            <a class="active" href="javascript:;">黑色</a>
-            <a href="javascript:;">蓝色</a>
+            <a
+            :class="{active: child.id === item.isCurrent}"
+            href="javascript:;"
+            @click="choseStandard([item.id,child.id,item.name,child.name])"
+            v-for="child in item.properties"
+            :key="child.id">{{child.name}}</a>
           </div>
         </div>
       </div>
@@ -40,128 +41,23 @@
             <a href="javascript:;">最高人气</a>
             <a href="javascript:;">评论最多</a>
           </div>
-          <div class="check">
-            <div class="checkbox">
-              <i class="iconfont icon-checked"></i>
-              <span>仅显示有货商品</span>
-            </div>
-            <div class="checkbox">
-              <i class="iconfont icon-unchecked"></i>
-              <span>仅显示有货商品</span>
-            </div>
+          <!-- 复选框 -->
+           <div class="check">
+            <checkbox-vue></checkbox-vue>
           </div>
         </div>
         <ul>
-          <li>
-            <router-link to="/product/id" class="goods-item hover-shadow">
+          <li v-for="item in store.state.category.categories" :key="item.id">
+            <router-link :to="`/product/${item.id}`" class="goods-item hover-shadow">
               <img v-lazy
-                src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-                alt=""
+                :src="item.picture"
               />
-              <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
+              <p class="name ellipsis">{{item.name}}</p>
               <p class="desc ellipsis">
-                百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
+                {{item.desc}}
               </p>
               <!-- &yen; 人民币标记 -->
-              <p class="price">&yen;12</p>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/product/id" class="goods-item hover-shadow">
-              <img v-lazy
-                src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-                alt=""
-              />
-              <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-              <p class="desc ellipsis">
-                百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-              </p>
-              <!-- &yen; 人民币标记 -->
-              <p class="price">&yen;12</p>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/product/id" class="goods-item hover-shadow">
-              <img v-lazy
-                src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-                alt=""
-              />
-              <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-              <p class="desc ellipsis">
-                百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-              </p>
-              <!-- &yen; 人民币标记 -->
-              <p class="price">&yen;12</p>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/product/id" class="goods-item hover-shadow">
-              <img v-lazy
-                src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-                alt=""
-              />
-              <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-              <p class="desc ellipsis">
-                百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-              </p>
-              <!-- &yen; 人民币标记 -->
-              <p class="price">&yen;12</p>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/product/id" class="goods-item hover-shadow">
-              <img v-lazy
-                src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-                alt=""
-              />
-              <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-              <p class="desc ellipsis">
-                百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-              </p>
-              <!-- &yen; 人民币标记 -->
-              <p class="price">&yen;12</p>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/product/id" class="goods-item hover-shadow">
-              <img v-lazy
-                src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-                alt=""
-              />
-              <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-              <p class="desc ellipsis">
-                百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-              </p>
-              <!-- &yen; 人民币标记 -->
-              <p class="price">&yen;12</p>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/product/id" class="goods-item hover-shadow">
-              <img v-lazy
-                src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-                alt=""
-              />
-              <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-              <p class="desc ellipsis">
-                百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-              </p>
-              <!-- &yen; 人民币标记 -->
-              <p class="price">&yen;12</p>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/product/id" class="goods-item hover-shadow">
-              <img v-lazy
-                src="https://yanxuan-item.nosdn.127.net/12a882699bd531a1bd428bffe1989525.jpg"
-                alt=""
-              />
-              <p class="name ellipsis">【包邮】优雅香槟杯气泡酒杯高脚杯2支装</p>
-              <p class="desc ellipsis">
-                百年工艺一体成型，触感光滑，精致透亮，有余音绕梁之感
-              </p>
-              <!-- &yen; 人民币标记 -->
-              <p class="price">&yen;12</p>
+              <p class="price">&yen;{{item.price}}</p>
             </router-link>
           </li>
         </ul>
@@ -180,7 +76,47 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useStore } from 'vuex'
+import { useRoute } from 'vue-router'
+import { ref } from 'vue-demi'
+import CheckboxVue from './components/checkboxVue.vue'
+const store = useStore()
+const route = useRoute()
+store.dispatch('category/filter', route.params.id)
+const currentbrands = ref('0')
+// 选择品牌
+const choseBrand = (id) => {
+  currentbrands.value = id
+  condition.value.categoryId = route.params.id
+  condition.value.brandId = id
+  getList()
+}
+// 选择规格
+const choseStandard = (arr) => {
+  store.commit('category/changActive', arr)
+  condition.value.attrs.push({
+    groupName: arr[2],
+    propertyName: arr[3]
+  })
+  getList()
+}
+const query = ref({
+  page: 1,
+  pageSize: 20
+})
+const condition = ref({
+  attrs: [],
+  brandId: null,
+  categoryId: ''
+})
+// 获取列表
+const getList = () => {
+  store.dispatch('category/getlistBybrand', { ...query.value, ...condition.value })
+}
+getList()
+
+</script>
 
 <style lang="scss" scoped>
 .goods-list {
@@ -305,27 +241,6 @@
   }
 }
 // 排序区域样式结束
-
-// checkbox 样式
-.checkbox {
-  display: inline-block;
-  margin-right: 2px;
-  .icon-checked {
-    color: $xtxColor;
-    // ~ 表示兄弟层级：.icon-checked的兄弟
-    ~ span {
-      color: $xtxColor;
-    }
-  }
-  i {
-    position: relative;
-    top: 1px;
-  }
-  span {
-    margin-left: 2px;
-  }
-}
-// checkbox 样式结束
 
 // 商品 item
 .goods-item {

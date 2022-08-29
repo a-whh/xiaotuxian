@@ -4,7 +4,7 @@
       <!-- 面包屑 -->
       <m-bread>
         <m-bread-item to="/">首页</m-bread-item>
-        <m-bread-item>居家</m-bread-item>
+        <m-bread-item>{{name}}</m-bread-item>
       </m-bread>
       <!-- 二级分类 -->
       <div class="sub-list">
@@ -53,10 +53,12 @@ import { useRoute } from 'vue-router'
 import { ref, watch } from 'vue'
 import More from '../../lib/more.vue'
 const route = useRoute()
+const name = ref('')
 // 全部分类
 const allsort = ref([])
 const getAll = async() => {
   allsort.value = await getAllCategory(route.params.pid)
+  name.value = allsort.value.name
 }
 getAll()
 watch(
