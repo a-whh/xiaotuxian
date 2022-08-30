@@ -43,7 +43,8 @@
           </div>
           <!-- 复选框 -->
            <div class="check">
-            <checkbox-vue></checkbox-vue>
+            <checkbox-vue v-model:checked="checked">仅显示有货商品</checkbox-vue>
+            <checkbox-vue v-model:checked="checked2">仅显示特惠商品</checkbox-vue>
           </div>
         </div>
         <ul>
@@ -62,16 +63,13 @@
           </li>
         </ul>
       </div>
-
-      <div class="infinite-loading">
-        <div class="loading">
-          <span class="img"></span>
-          <span class="text">正在加载...</span>
-        </div>
-        <div class="none">
-          <span class="text">亲，没有更多了</span>
-        </div>
-      </div>
+<!-- loading -->
+      <Loading
+      v-model:loading="loading"
+      :finished="finished"
+      finishedText="没有更多了"
+      ref="target"
+      ></Loading>
     </div>
   </div>
 </template>
@@ -79,14 +77,22 @@
 <script setup>
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
-import { ref } from 'vue-demi'
+import { ref, watch } from 'vue'
 import CheckboxVue from './components/checkboxVue.vue'
+import Loading from './components/loading.vue'
+import { useIntersectionObserver } from '@vueuse/core'
 const store = useStore()
 const route = useRoute()
+const checked = ref(false)
+const checked2 = ref(false)
+const loading = ref(false)
+const finished = ref(false)
 store.dispatch('category/filter', route.params.id)
 const currentbrands = ref('0')
 // 选择品牌
 const choseBrand = (id) => {
+  query.value.page = 1
+  store.commit('category/SETBARE')
   currentbrands.value = id
   condition.value.categoryId = route.params.id
   condition.value.brandId = id
@@ -94,6 +100,8 @@ const choseBrand = (id) => {
 }
 // 选择规格
 const choseStandard = (arr) => {
+  query.value.page = 1
+  store.commit('category/SETBARE')
   store.commit('category/changActive', arr)
   condition.value.attrs.push({
     groupName: arr[2],
@@ -108,14 +116,67 @@ const query = ref({
 const condition = ref({
   attrs: [],
   brandId: null,
-  categoryId: ''
+  categoryId: '',
+  inventory: null, // 仅显示 有货
+  onlyDiscount: null // 特惠
 })
 // 获取列表
 const getList = () => {
   store.dispatch('category/getlistBybrand', { ...query.value, ...condition.value })
 }
 getList()
-
+const addList = () => {
+  store.dispatch('category/addgoodsList', { ...query.value, ...condition.value })
+}
+watch(
+  checked,
+  (n, o) => {
+    condition.value.inventory = n
+    getList()
+  }
+)
+watch(
+  checked2,
+  (n, o) => {
+    condition.value.onlyDiscount = n
+    query.value.page = 1
+    store.commit('category/SETBARE')
+    getList()
+  }
+)
+// 下拉加载更多
+const target = ref(null)
+useIntersectionObserver(
+  target,
+  ([{ isIntersecting }], observerElement) => {
+    if (isIntersecting && !finished.value) {
+      console.log('show')
+      loading.value = true
+      finished.value = false
+      query.value.page++
+      addList()
+    }
+  }
+)
+store.commit('category/SETBARE')
+console.log(store.state.category.bare)
+watch(
+  () => store.state.category.bare,
+  (n, o) => {
+    console.log(n, o)
+    if (n) {
+      finished.value = true
+      loading.value = false
+    } else {
+      finished.value = false
+    }
+  },
+  {
+    deep: true,
+    immediate: true
+  }
+)
+// List 组件通过 loading 和 finished 两个变量控制加载状态，当组件滚动到底部时，会触发 load 事件并将 loading 设置成 true。此时可以发起异步操作并更新数据，数据更新完毕后，将 loading 设置成 false 即可。若数据已全部加载完毕，则直接将 finished 设置成 true 即可。
 </script>
 
 <style lang="scss" scoped>
@@ -269,38 +330,4 @@ getList()
 }
 // 商品 item 样式结束
 
-// 加载更多 loading 样式
-.infinite-loading {
-  .loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 200px;
-    .img {
-      width: 50px;
-      height: 50px;
-      background: url(~@/assets/images/load.gif) no-repeat center / contain;
-    }
-    .text {
-      color: #999;
-      font-size: 16px;
-    }
-  }
-  .none {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 200px;
-    .img {
-      width: 200px;
-      height: 134px;
-      background: url(~@/assets/images/none.png) no-repeat center / contain;
-    }
-    .text {
-      color: #999;
-      font-size: 16px;
-    }
-  }
-}
-// 加载更多 loading 样式结束
 </style>

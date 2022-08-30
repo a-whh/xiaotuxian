@@ -6,7 +6,8 @@ const getDefaultState = () => {
     parentName: '',
     brands: [],
     categories: [],
-    saleProperties: []
+    saleProperties: [],
+    bare: false
   }
 }
 
@@ -45,22 +46,43 @@ const mutations = {
         item.isCurrent = arr[1]
       }
     })
+  },
+  ADD_categories(state, goods) {
+    state.categories.push(...goods)
+  },
+  // 空了
+  SETNULL(state, n) {
+    state.bare = n
+  },
+  SETBARE(state) {
+    state.bare = false
+  },
+  clear(state) {
+    state.categories = []
   }
-
 }
 
 const actions = {
   filter: async({ commit }, id) => {
     const res = await filterGoods(id)
-    console.log(res)
     commit('SETNAME', res.name)
     commit('SETparentName', res.parentName)
     commit('SETbrands', res.brands)
     commit('SETgoods', res.saleProperties)
   },
   getlistBybrand: async({ commit }, obj) => {
+    if (obj.page === 1) {
+      commit('clear')
+    }
     const res = await getList(obj)
     commit('SET_categories', res.items)
+  },
+  addgoodsList: async({ commit }, obj) => {
+    const res = await getList(obj)
+    commit('ADD_categories', res.items)
+    if (res.items.length === 0) {
+      commit('SETNULL', true)
+    }
     console.log(res)
   }
 }

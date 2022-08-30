@@ -1,18 +1,35 @@
 <!--  -->
 <template>
-    <div class="checkbox">
-      <i class="iconfont icon-checked"></i>
-      <span>仅显示有货商品</span>
+    <div class="checkbox"
+    @click="clickFn"
+    >
+      <i class="iconfont icon-checked"
+      v-if="checked"
+      ></i>
+      <i
+      v-else
+      class="iconfont icon-unchecked"></i>
+      <span><slot></slot></span>
     </div>
             <!-- <div class="checkbox">
               <i class="iconfont icon-unchecked"></i>
-              <span>仅显示有货商品</span>
+              <span>仅显示特惠商品</span>
             </div> -->
 </template>
 
 <script setup>
-import {} from 'vue'
-
+import { defineProps, defineEmits } from 'vue'
+const props = defineProps({
+  checked: Boolean
+})
+const emit = defineEmits(['update:checked'])
+const clickFn = () => {
+  if (props.checked === true) {
+    emit('update:checked', false)
+  } else {
+    emit('update:checked', true)
+  }
+}
 </script>
 
 <style lang="scss" scoped>
